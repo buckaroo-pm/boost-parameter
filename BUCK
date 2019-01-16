@@ -1,13 +1,14 @@
-include_defs('//BUCKAROO_DEPS')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps')
+load('//:subdir_glob.bzl', 'subdir_glob')
 
 prebuilt_cxx_library(
-  name = 'parameter', 
+  name = 'parameter',
   header_only = True,
-  header_namespace = 'boost', 
+  header_namespace = 'boost',
   exported_headers = subdir_glob([
     ('include/boost', '**/*.hpp'),
   ]),
-  deps = BUCKAROO_DEPS,
+  deps = buckaroo_deps(),
   visibility = [
     'PUBLIC',
   ],
